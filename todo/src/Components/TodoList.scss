@@ -1,0 +1,20 @@
+.todo{
+    display: flex;
+    flex-direction: column;
+    border: 2px solid navy;
+    width: 25%;
+}
+
+.wrapper{
+    display: flex;
+    flex-direction: column;
+}
+
+.todo-section{
+    display: flex;
+    justify-content: space-around;
+}
+
+.hidden{
+    display: none;
+}
