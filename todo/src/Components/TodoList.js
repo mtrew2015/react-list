@@ -10,6 +10,7 @@ class TodoList extends Component {
 			todo: '',
 			urgency: 'urgent',
             mood: 0,
+            tempMood: 0,
             totalMood: 0
 		};
 	}
@@ -32,7 +33,7 @@ class TodoList extends Component {
     moodConfigurator = () => {
         const totalItems = this.state.todos.length;
         const moodTotal = this.state.mood + totalItems;
-        this.setState({totalMood: moodTotal})
+        this.setState({mood: moodTotal})
     }
 
 	onChange = (e) => {
@@ -69,13 +70,16 @@ class TodoList extends Component {
         e.preventDefault();
         const questions = document.getElementsByClassName('questions')
         questions[0].classList.add('hidden')
+        this.setState((prev => {
+            return {mood: prev.mood + prev.tempMood}
+        }))
 
     };
 
 	valueChange = (e) => {
 		const val = e.target.value;
 		this.setState((prevState) => {
-			return { mood: Number(prevState.mood) + Number(val) };
+			return { tempMood: Number(prevState.tempMood) + Number(val) };
 		});
 	};
 	render() {
